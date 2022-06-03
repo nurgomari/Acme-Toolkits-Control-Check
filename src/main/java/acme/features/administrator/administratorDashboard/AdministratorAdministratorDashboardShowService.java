@@ -57,6 +57,14 @@ public class AdministratorAdministratorDashboardShowService implements AbstractS
 	    final Map<PatronageStatus, Double>         minimumBudgetPatronage= new EnumMap<>(PatronageStatus.class);
 	    final Map<PatronageStatus, Double>         maximumBudgetPatronage= new EnumMap<>(PatronageStatus.class);
 	    
+	    
+	    final Double                               ratioToolsWithChimpum = this.repository.findToolsWithChimpum()/this.repository.findNumberTools();
+	    
+	    final Map<String, Double>                  averageBudgetChimpum= new HashMap<>();
+	    final Map<String, Double>                  deviationBudgetChimpum= new HashMap<>();
+	    final Map<String, Double>                  minimumBudgetChimpum= new HashMap<>();
+	    final Map<String, Double>                  maximumBudgetChimpum= new HashMap<>();
+	    
 	    final AdministratorDashboard result = new AdministratorDashboard();
 	    
 	    
@@ -127,6 +135,26 @@ public class AdministratorAdministratorDashboardShowService implements AbstractS
 	    	maximumBudgetPatronage.put(PatronageStatus.values()[Integer.parseInt(maximumPatronages[0])], Double.parseDouble(maximumPatronages[1]));
 	    }
 	    
+	    
+	    
+	    final List<String> findAverageBudgetChimpum = this.repository.findAverageBudgetChimpum();
+	    final List<String> findDeviationBudgetChimpum = this.repository.findDeviationBudgetChimpum();
+	    final List<String> findMinimumBudgetChimpum = this.repository.findMinimumBudgetChimpum();
+	    final List<String> findMaximumBudgetChimpum = this.repository.findMaximumBudgetChimpum();
+	    
+	    for (int i=0; i<findAverageBudgetChimpum.size();i++) {
+	    	final String[] averageChimpum=findAverageBudgetChimpum.get(i).split(":");
+	    	averageBudgetChimpum.put(averageChimpum[0], Double.parseDouble(averageChimpum[1]));
+	    	
+	    	final String[] deviationChimpum=findDeviationBudgetChimpum.get(i).split(":");
+	    	deviationBudgetChimpum.put(deviationChimpum[0], Double.parseDouble(deviationChimpum[1]));
+	    	
+	    	final String[] minimumChimpum=findMinimumBudgetChimpum.get(i).split(":");
+	    	minimumBudgetChimpum.put(minimumChimpum[0], Double.parseDouble(minimumChimpum[1]));
+	    	
+	    	final String[] maximumChimpum=findMaximumBudgetChimpum.get(i).split(":");
+	    	maximumBudgetChimpum.put(maximumChimpum[0], Double.parseDouble(maximumChimpum[1]));
+	    }
 
 	    result.setNumberComponents(numberComponents);
 	    
@@ -146,6 +174,12 @@ public class AdministratorAdministratorDashboardShowService implements AbstractS
 	    result.setDeviationBudgetPatronage(deviationBudgetPatronage);
 	    result.setMinimumBudgetPatronage(minimumBudgetPatronage);
 	    result.setMaximumBudgetPatronage(maximumBudgetPatronage);
+	    
+	    result.setRatioToolsWithChimpum(ratioToolsWithChimpum);
+	    result.setAverageBudgetChimpum(averageBudgetChimpum);
+	    result.setDeviationBudgetChimpum(deviationBudgetChimpum);
+	    result.setMinimumBudgetChimpum(minimumBudgetChimpum);
+	    result.setMaximumBudgetChimpum(maximumBudgetChimpum);
 	        
 	    return result;
 	}
@@ -174,6 +208,12 @@ public class AdministratorAdministratorDashboardShowService implements AbstractS
 		model.setAttribute("deviationBudgetPatronage", entity.getDeviationBudgetPatronage());
 		model.setAttribute("minimumBudgetPatronage", entity.getMinimumBudgetPatronage());
 		model.setAttribute("maximumBudgetPatronage", entity.getMaximumBudgetPatronage());
+		
+		model.setAttribute("ratioToolsWithChimpum", entity.getRatioToolsWithChimpum());
+		model.setAttribute("averageBudgetChimpum", entity.getAverageBudgetChimpum());
+		model.setAttribute("deviationBudgetChimpum", entity.getDeviationBudgetChimpum());
+		model.setAttribute("minimumBudgetChimpum", entity.getMinimumBudgetChimpum());
+		model.setAttribute("maximumBudgetChimpum", entity.getMaximumBudgetChimpum());
 	
 	
 	

@@ -64,4 +64,20 @@ public interface AdministratorAdministratorDashboardRepository extends AbstractR
 	List<String> findMaximumBudgetPatronage();
 	
 	
+	
+	@Query("SELECT count(c) FROM Chimpum c WHERE c.invention.inventionType=acme.entities.inventions.InventionType.TOOL")
+	Double findToolsWithChimpum();
+	
+	@Query("SELECT concat(c.budget.currency,':', avg(c.budget.amount)) FROM Chimpum c GROUP BY c.budget.currency")
+	List<String> findAverageBudgetChimpum();
+	
+	@Query("SELECT concat(c.budget.currency,':',stddev(c.budget.amount)) FROM Chimpum c GROUP BY c.budget.currency")
+	List<String> findDeviationBudgetChimpum();
+	
+	@Query("SELECT concat(c.budget.currency,':', min(c.budget.amount)) FROM Chimpum c GROUP BY c.budget.currency")
+	List<String> findMinimumBudgetChimpum();
+	
+	@Query("SELECT concat(c.budget.currency,':', max(c.budget.amount)) FROM Chimpum c GROUP BY c.budget.currency")
+	List<String> findMaximumBudgetChimpum();
+	
 }

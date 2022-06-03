@@ -102,6 +102,8 @@
       		<acme:menu-suboption code="master.menu.authenticated.system-configuration" action="/authenticated/system-configuration/show"/>
       		<acme:menu-separator/>
       		<acme:menu-suboption code="master.menu.inventor.invention.create" action="/inventor/invention/create"/>
+      		<acme:menu-separator/>
+      		<acme:menu-suboption code="master.menu.inventor.chimpum.list" action="/inventor/chimpum/list"/>
 		</acme:menu-option>
 		
 		

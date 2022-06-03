@@ -668,4 +668,41 @@ m2=0..*
 has v</panel_attributes>
     <additional_attributes>320.0;10.0;20.0;10.0;10.0;750.0;240.0;750.0</additional_attributes>
   </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>826</y>
+      <w>322</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+Chimpum
+--
++ code: String {NotBlank, Pattern("^[A-Z]{3}-[0-9]{3}(-[A-Z])-[0-9]{2}-[0-9]{2}-[0-9]{2}?$"), Unique}
++ creationMoment: Date {Temporal(TIMESTAMP), NotNull, Past}
++ title: String  {NotBlank, Length(0, 100)}
++ description: String  {NotBlank, Length(0, 255)}
++ startTime: Date {Temporal(TIMESTAMP), NotNull}
++ endTime: Date {Temporal(TIMESTAMP), NotNull}
++ budget: Money {Valid}
++ link: String {URL}
++ / spam: Boolean {Transient}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>623</x>
+      <y>784</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..1
+has v</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0;190.0;160.0</additional_attributes>
+  </element>
 </diagram>

@@ -1,0 +1,14 @@
+inventor.chimpum.list.label.code = Code
+inventor.chimpum.list.label.title = Title
+inventor.chimpum.list.label.description = Description
+inventor.chimpum.list.label.budget = Budget
+
+inventor.chimpum.list.label.creationMoment = Creation Moment
+inventor.chimpum.list.label.startTime = Start Time
+inventor.chimpum.list.label.endTime = End Time
+inventor.chimpum.list.label.link = Link
+
+inventor.chimpum.message.invention = Associated Invention
+inventor.chimpum.form.label.invention.name = Invention Name
+inventor.chimpum.form.label.invention.code = Invention Code
+inventor.chimpum..form.label.invention.description = Invention Description
